@@ -7,13 +7,13 @@ from map_label import *
 from plot_license_plate import *
 from read_license_plate import *
 
-def main(model1,model2):
+def process_license_plate(model1,model2):
     # โหลดโมเดล
     Crop_License_Plate_model = model1
     Read_License_Plate_model = model2
 
     # อ่านภาพต้นฉบับ
-    image_path = "CropPlate/20221214154741-e57f_wm_jpg.rf.7df47b3edc6fb6c70652f06d5f316207.jpg"
+    image_path = "uploads/upload_Photo.jpg"
     original_image = cv2.imread(image_path)
 
     # ตรวจจับกรอบป้ายทะเบียน
@@ -33,7 +33,7 @@ def main(model1,model2):
 
     # แสดงผลทั้งหมด
     # plt.show()
-    return jsonify({"result": result})
+    return result
 
 if __name__ == "__main__":
-    main()
+    process_license_plate()

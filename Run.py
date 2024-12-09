@@ -29,6 +29,7 @@ def plot_license_plate(results, model):
 
 def read_license_plate(results, model, i):
     xy = []  # ใช้ list เพื่อเก็บข้อมูล box ทั้งหมด
+    final_result = []
     for result in results:
         print(f"License Plate {i}")
         if(len(result.boxes.xyxy) != 0):
@@ -52,9 +53,10 @@ def read_license_plate(results, model, i):
             final_sorted_boxes = sorted(sorted_boxes , key=lambda ob: ob["coordinates"][0])  # ใช้ x1
             
             for result in final_sorted_boxes:
-                print(result["class_name"])
-                
-            print(provide["class_name"])
+                print(result)
+                final_result.append(results)
+            final_result.append(provide)
+            print(provide)
         else:
             print("Can't detect label in this License Plate")
 

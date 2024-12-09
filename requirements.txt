@@ -1,0 +1,4 @@
+flask
+ultralytics
+matplotlib
+opencv-python

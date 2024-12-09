@@ -1,16 +1,6 @@
-import sys
-import os
-
-# กำหนด Path ของ Virtual Environment
-venv_path = os.path.join(os.path.dirname(__file__), 'myenv', 'Lib')
-
-# เพิ่ม path ของ Lib ใน sys.path
-sys.path.append(venv_path)
-
 import matplotlib.pyplot as plt
 import cv2
 from flask import jsonify
-import json
 
 from province_abbreviation_to_name import *
 from map_label import *

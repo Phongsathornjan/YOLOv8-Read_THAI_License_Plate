@@ -16,7 +16,7 @@ app = Flask(__name__)
 Crop_License_Plate_model = YOLO("train_Crop_License_Plate/train/weights/best.pt")
 Read_License_Plate_model = YOLO("train_Read_License_Plate/train/weights/best.pt")
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET'])
 def read_license_plate():
     return main(Crop_License_Plate_model,Read_License_Plate_model)
 

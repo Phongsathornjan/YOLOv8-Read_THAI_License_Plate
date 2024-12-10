@@ -1,11 +1,4 @@
-import sys
 import os
-
-# กำหนด Path ของ Virtual Environment
-venv_path = os.path.join(os.path.dirname(__file__), 'myenv', 'Lib')
-
-# เพิ่ม path ของ Lib ใน sys.path
-sys.path.append(venv_path)
 
 from flask import Flask, request, jsonify
 from main import process_license_plate

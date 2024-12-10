@@ -23,15 +23,15 @@ def process_license_plate(model1,model2):
     # อ่านข้อมูลจากกรอบที่ครอบแต่ละกรอบ
     result = []
     for i, (x1, y1, x2, y2) in enumerate(all_boxes, start=1):  # เริ่มที่ Figure 2
-        cropped_image = original_image[y1:y2, x1:x2]  # ตัดภาพตามพิกัด
+        cropped_image = original_image[y1+5:y2-5, x1+5:x2-5]  # ตัดภาพตามพิกัด
         Read_result = Read_License_Plate_model.predict(cropped_image)
         result.append(read_license_plate(Read_result, Read_License_Plate_model, i, [x1,y1,x2,y2]))
-        # plt.figure(i)
-        # plt.imshow(cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB))
-        # plt.title(f'License Plate {i-1}')
-        # plt.axis('off')
+    #     plt.figure(i)
+    #     plt.imshow(cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB))
+    #     plt.title(f'License Plate {i-1}')
+    #     plt.axis('off')
 
-    # แสดงผลทั้งหมด
+    # # แสดงผลทั้งหมด
     # plt.show()
     return result
 

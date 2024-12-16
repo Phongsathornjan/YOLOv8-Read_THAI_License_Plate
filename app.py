@@ -7,7 +7,7 @@ from ultralytics import YOLO
 app = Flask(__name__)
 
 Crop_License_Plate_model = YOLO("train_Crop_License_Plate/train/weights/best.pt")
-Read_License_Plate_model = YOLO("train_Read_License_Plate/train/weights/best.pt")
+Read_License_Plate_model = YOLO("train_Read_License_PlateV2/weights/best.pt")
 
 # กำหนดโฟลเดอร์สำหรับบันทึกรูปภาพชั่วคราว
 UPLOAD_FOLDER = './uploads'

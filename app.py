@@ -1,13 +1,10 @@
 import os
 
 from flask import Flask, request, jsonify
-from main import process_license_plate
-from ultralytics import YOLO
+# from main import process_license_plate
+from CNN import CNN_process
 
 app = Flask(__name__)
-
-Crop_License_Plate_model = YOLO("train_Crop_License_Plate/train/weights/best.pt")
-Read_License_Plate_model = YOLO("train_Read_License_PlateV2/weights/best.pt")
 
 # กำหนดโฟลเดอร์สำหรับบันทึกรูปภาพชั่วคราว
 UPLOAD_FOLDER = './uploads'
@@ -39,9 +36,14 @@ def read_license_plate():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], "upload_Photo.jpg")
         file.save(file_path)
         
-        result = process_license_plate(Crop_License_Plate_model,Read_License_Plate_model)
+        result = CNN_process()
+        # result = process_license_plate()
         os.remove("uploads/upload_Photo.jpg")
         
+        if(len(result) == 0):
+            return jsonify({
+                'message' : "Can't detect license plate "
+                            }), 204
         return jsonify(result), 200
     
     except Exception as e:
